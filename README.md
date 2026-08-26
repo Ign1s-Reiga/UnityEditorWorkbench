@@ -17,6 +17,24 @@ The repository contains:
 - A current Claude Code release with project skills and custom subagents
 - Python 3.10+ for repository validation
 
+## Install the package
+
+Install into another Unity project through Package Manager.
+
+From a release tarball:
+
+1. Download `com.ign1s.editor-workbench-<version>.tgz` from the
+   [releases page](https://github.com/Ign1s-Reiga/UnityEditorWorkbench/releases).
+2. In Package Manager choose `Add package from tarball` and select the file.
+
+From this repository, choose `Add package from git URL` and enter:
+
+```text
+https://github.com/Ign1s-Reiga/UnityEditorWorkbench.git?path=Packages/com.ign1s.editor-workbench
+```
+
+Append `#v0.1.0` to the git URL to pin a specific release instead of tracking `main`.
+
 ## Open the project
 
 1. Extract the archive.
