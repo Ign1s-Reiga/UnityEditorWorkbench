@@ -19,7 +19,7 @@
 
 ## M2 — Reliability
 
-- [ ] Verify compilation and tests on the selected Unity 6.3 LTS patch
+- [x] Verify compilation and tests on the selected Unity 6.5 patch
 - [ ] Add tests for assembly reload and deleted targets
 - [ ] Add stale folder-entry cleanup command
 - [ ] Profile Project and Hierarchy callback allocations
@@ -39,5 +39,5 @@
 - [ ] Scene object bookmarks
 - [ ] Saved workspace groups
 - [ ] Search and quick-open palette
-- [ ] Unity 6.3 main-toolbar integration through documented APIs
+- [ ] Unity 6.5 main-toolbar integration through documented APIs
 - [ ] Compatibility test matrix for later Unity 6 releases
