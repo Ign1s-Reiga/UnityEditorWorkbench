@@ -37,3 +37,7 @@ CLAUDE.local.md
 # Test output
 TestResults/
 artifacts/
+
+# Python tooling
+__pycache__/
+*.pyc

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -17,6 +18,42 @@ REQUIRED = [
     "ProjectSettings/ProjectVersion.txt",
 ]
 PROHIBITED_DIRECTORIES = {"Library", "Temp", "Logs", "UserSettings"}
+
+# Unity and the tooling regenerate these locally. They are ignored by git, so they may
+# exist on disk; they must simply never be tracked. Walks skip them so the validator
+# never inspects Unity's own package sources.
+GENERATED_DIRECTORIES = PROHIBITED_DIRECTORIES | {
+    ".git",
+    "Build",
+    "Builds",
+    "TestResults",
+    "obj",
+}
+
+
+def iter_project_files(pattern: str):
+    """Yield files matching pattern, excluding anything under a generated directory."""
+    for path in ROOT.rglob(pattern):
+        directories = set(path.relative_to(ROOT).parts[:-1])
+        if directories & GENERATED_DIRECTORIES:
+            continue
+        yield path
+
+
+def tracked_generated_directories() -> list[str]:
+    """Return generated directories that git actually tracks, newest git state only."""
+    try:
+        completed = subprocess.run(
+            ["git", "ls-files", "--"] + sorted(PROHIBITED_DIRECTORIES),
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        # No git available, or not a repository. Nothing can be committed here.
+        return []
+    return sorted({line.split("/")[0] for line in completed.stdout.splitlines() if line})
 
 
 def fail(message: str, errors: list[str]) -> None:
@@ -65,11 +102,10 @@ def main() -> int:
         if not (ROOT / relative).exists():
             fail(f"Missing required file: {relative}", errors)
 
-    for directory in PROHIBITED_DIRECTORIES:
-        if (ROOT / directory).exists():
-            fail(f"Generated directory must not be committed: {directory}", errors)
+    for directory in tracked_generated_directories():
+        fail(f"Generated directory must not be committed: {directory}", errors)
 
-    for path in ROOT.rglob("*.json"):
+    for path in iter_project_files("*.json"):
         try:
             json.loads(path.read_text(encoding="utf-8"))
         except Exception as exception:
@@ -92,7 +128,7 @@ def main() -> int:
                 names[key] = path
 
     compatibility_root = ROOT / "Packages/com.ign1s.editor-workbench/Editor/Compatibility"
-    for path in ROOT.rglob("*.cs"):
+    for path in iter_project_files("*.cs"):
         check_braces(path, errors)
         text = path.read_text(encoding="utf-8")
         is_compatibility = compatibility_root in path.parents
@@ -114,7 +150,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print(f"Validation passed: {len(list(ROOT.rglob('*.cs')))} C# files, {len(names)} Claude extensions.")
+    print(f"Validation passed: {len(list(iter_project_files('*.cs')))} C# files, {len(names)} Claude extensions.")
     return 0
 
 
