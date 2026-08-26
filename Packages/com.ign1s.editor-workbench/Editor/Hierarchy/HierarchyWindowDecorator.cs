@@ -8,18 +8,18 @@ internal static class HierarchyWindowDecorator
 {
     static HierarchyWindowDecorator()
     {
-        EditorApplication.hierarchyWindowItemOnGUI -= DrawHierarchyItem;
-        EditorApplication.hierarchyWindowItemOnGUI += DrawHierarchyItem;
+        EditorApplication.hierarchyWindowItemByEntityIdOnGUI -= DrawHierarchyItem;
+        EditorApplication.hierarchyWindowItemByEntityIdOnGUI += DrawHierarchyItem;
     }
 
-    private static void DrawHierarchyItem(int instanceId, Rect selectionRect)
+    private static void DrawHierarchyItem(EntityId entityId, Rect selectionRect)
     {
         if (!ProjectWorkbenchSettings.instance.HierarchyDecorationsEnabled)
         {
             return;
         }
 
-        GameObject gameObject = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
+        GameObject gameObject = EditorUtility.EntityIdToObject(entityId) as GameObject;
         if (gameObject == null)
         {
             return;
