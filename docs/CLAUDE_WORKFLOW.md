@@ -10,7 +10,7 @@ claude
 
 ## Recommended first pass
 
-1. Invoke `/plan-next-milestone M2 reliability and Unity 6000.3 verification`.
+1. Invoke `/plan-next-milestone M2 reliability and Unity 6000.5 verification`.
 2. Ask `@unity-editor-architect` to review the resulting boundary and acceptance criteria.
 3. Ask `@unity-editor-implementer` to implement one approved vertical slice.
 4. Invoke `/review-editor-code` or ask `@unity-test-reviewer` for a read-only review.

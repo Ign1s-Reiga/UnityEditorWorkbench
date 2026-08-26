@@ -8,7 +8,7 @@ Review the current changes without editing files.
 
 ## Checklist
 
-- Compile-time API correctness for Unity 6000.3 LTS
+- Compile-time API correctness for Unity 6000.5
 - Matching subscribe and unsubscribe behavior
 - Cached `UnityEditor.Editor` destruction
 - Safe behavior after domain reload and target deletion

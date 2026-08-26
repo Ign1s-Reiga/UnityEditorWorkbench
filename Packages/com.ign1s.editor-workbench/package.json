@@ -2,7 +2,7 @@
   "name": "com.ign1s.editor-workbench",
   "displayName": "Ign1s Editor Workbench",
   "version": "0.1.0",
-  "unity": "6000.3",
+  "unity": "6000.5",
   "description": "Public-API-first Unity Editor productivity tools: folder appearance, favorites, a tabbed companion inspector, and hierarchy helpers.",
   "author": {
     "name": "Ign1s-Reiga"
