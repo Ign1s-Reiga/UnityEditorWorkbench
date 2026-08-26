@@ -2,7 +2,7 @@
 
 ## Baseline
 
-The project baseline is Unity `6000.5.2f1`, within Unity 6.5. The package declares `unity: 6000.5`.
+The project baseline is Unity `6000.5.2f1`, within Unity 6.5 LTS. The package declares `unity: 6000.5`.
 
 ## Language version
 

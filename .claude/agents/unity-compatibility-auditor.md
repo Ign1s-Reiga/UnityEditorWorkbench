@@ -5,7 +5,7 @@ tools: Read, Grep, Glob
 model: inherit
 ---
 
-Audit the package against Unity 6000.5 and the compatibility policy.
+Audit the package against Unity 6000.5 LTS and the compatibility policy.
 
 Search for reflection, `UnityEditorInternal`, obsolete callbacks, version defines, undocumented type names, and assumptions about built-in window implementation. Verify that version-specific code is isolated under `Editor/Compatibility`. Report:
 

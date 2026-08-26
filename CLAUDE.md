@@ -6,7 +6,7 @@ Build a stable, maintainable Unity Editor productivity package that covers the w
 
 ## Target environment
 
-- Unity: 6000.5
+- Unity: 6000.5 LTS
 - Language: C#
 - Package: `Packages/com.ign1s.editor-workbench`
 - Scope: Editor-only. Do not add runtime assemblies unless a feature strictly requires them.
@@ -97,7 +97,7 @@ $env:UNITY_EDITOR_PATH = "C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.2f1\\Edi
 
 A feature is complete only when:
 
-- It compiles in Unity 6.5.
+- It compiles in Unity 6.5 LTS.
 - Core non-visual behavior has EditMode coverage.
 - Domain reload does not duplicate callbacks or leak editors.
 - Missing or deleted targets fail gracefully.

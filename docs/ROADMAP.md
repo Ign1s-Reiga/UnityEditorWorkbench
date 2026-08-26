@@ -19,7 +19,7 @@
 
 ## M2 — Reliability
 
-- [x] Verify compilation and tests on the selected Unity 6.5 patch
+- [x] Verify compilation and tests on the selected Unity 6.5 LTS patch
 - [ ] Add tests for assembly reload and deleted targets
 - [ ] Add stale folder-entry cleanup command
 - [ ] Profile Project and Hierarchy callback allocations

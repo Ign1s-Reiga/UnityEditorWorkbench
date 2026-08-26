@@ -1,6 +1,6 @@
 # Unity Editor Workbench
 
-A source-first Unity 6.5 project for building a personal replacement for common productivity assets such as folder decorators and tabbed inspector tools.
+A source-first Unity 6.5 LTS project for building a personal replacement for common productivity assets such as folder decorators and tabbed inspector tools.
 
 The repository contains:
 
@@ -13,7 +13,7 @@ The repository contains:
 
 ## Requirements
 
-- Unity `6000.5.2f1` or another compatible Unity 6.5 patch
+- Unity `6000.5.2f1` or another compatible Unity 6.5 LTS patch
 - A current Claude Code release with project skills and custom subagents
 - Python 3.10+ for repository validation
 
@@ -21,7 +21,7 @@ The repository contains:
 
 1. Extract the archive.
 2. Add the extracted `UnityEditorWorkbench` directory in Unity Hub.
-3. Open it with Unity 6.5.
+3. Open it with Unity 6.5 LTS.
 4. Wait for package resolution and script compilation.
 5. Open `Window > Editor Workbench > Inspector`.
 
