@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/validate_project.py)",
+      "Bash(git status --short)",
+      "Bash(git diff -- *)",
+      "Bash(git diff --cached -- *)"
+    ],
+    "ask": [
+      "Bash(./scripts/run-unity-tests.sh *)",
+      "Bash(powershell -File scripts/run-unity-tests.ps1 *)"
+    ],
+    "deny": [
+      "Read(./Library/**)",
+      "Read(./Temp/**)",
+      "Read(./Logs/**)",
+      "Read(./UserSettings/**)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  }
+}

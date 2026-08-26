@@ -1,0 +1,23 @@
+{
+  "name": "Ign1s.EditorWorkbench.Editor.Tests",
+  "rootNamespace": "Ign1s.EditorWorkbench.Tests",
+  "references": [
+    "Ign1s.EditorWorkbench.Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

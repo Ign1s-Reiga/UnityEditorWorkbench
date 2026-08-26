@@ -1,0 +1,16 @@
+{
+  "name": "Ign1s.EditorWorkbench.Editor",
+  "rootNamespace": "Ign1s.EditorWorkbench",
+  "references": [],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

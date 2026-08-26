@@ -1,0 +1,18 @@
+# Normalize line endings on commit, check out native.
+* text=auto
+
+# Unity source, YAML assets, and metadata are text and must merge as text.
+*.cs text diff=csharp
+*.asmdef text
+*.meta text
+*.asset text
+*.unity text
+*.prefab text
+*.json text
+*.md text
+
+# Shell scripts must keep LF so they remain runnable on POSIX hosts.
+*.sh text eol=lf
+
+# PowerShell scripts keep CRLF.
+*.ps1 text eol=crlf
