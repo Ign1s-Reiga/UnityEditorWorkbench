@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PACKAGE_DIR: Packages/com.ign1s.editor-workbench
+  PACKAGE_NAME: com.ign1s.editor-workbench
+
+jobs:
+  release:
+    name: Publish UPM tarball
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      # Never publish a tree that fails the structural checks.
+      - name: Validate repository structure
+        run: python scripts/validate_project.py
+
+      # A tag that disagrees with package.json would ship a mislabelled package.
+      - name: Verify tag matches package version
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PKG=$(python -c "import json; print(json.load(open('${PACKAGE_DIR}/package.json'))['version'])")
+          if [ "$TAG" != "$PKG" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} declares ${TAG} but ${PACKAGE_DIR}/package.json declares ${PKG}."
+            exit 1
+          fi
+          echo "version=${PKG}" >> "$GITHUB_OUTPUT"
+          echo "Tag and package.json agree on ${PKG}."
+
+      - name: Build UPM tarball
+        id: pack
+        run: |
+          npm pack --loglevel=error --pack-destination "$GITHUB_WORKSPACE" ./"$PACKAGE_DIR"
+          TARBALL="${PACKAGE_NAME}-${{ steps.version.outputs.version }}.tgz"
+          if [ ! -f "$TARBALL" ]; then
+            echo "::error::Expected ${TARBALL} was not produced."
+            ls -la
+            exit 1
+          fi
+          echo "tarball=${TARBALL}" >> "$GITHUB_OUTPUT"
+
+      # Unity rejects a tarball whose manifest is not at package/package.json.
+      - name: Verify tarball layout
+        run: |
+          TARBALL="${{ steps.pack.outputs.tarball }}"
+          tar -tzf "$TARBALL" > contents.txt
+          for required in package/package.json package/Editor/Ign1s.EditorWorkbench.Editor.asmdef package/Editor/csc.rsp; do
+            grep -qx "$required" contents.txt || {
+              echo "::error::${TARBALL} is missing ${required}."
+              exit 1
+            }
+          done
+          META=$(grep -c '\.meta$' contents.txt)
+          echo "${TARBALL}: $(wc -l < contents.txt) entries, ${META} meta files."
+          [ "$META" -gt 0 ] || { echo "::error::No .meta files in tarball."; exit 1; }
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes \
+            "${{ steps.pack.outputs.tarball }}"
