@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
 
 - Renamed the package from `com.ign1s.editor-workbench` to
   `dev.ign1s-reiga.editor-workbench`, moving the embedded directory to match.
