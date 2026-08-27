@@ -7,6 +7,6 @@
     "com.unity.modules.jsonserialize": "1.0.0"
   },
   "testables": [
-    "com.ign1s.editor-workbench"
+    "dev.ign1s-reiga.editor-workbench"
   ]
 }

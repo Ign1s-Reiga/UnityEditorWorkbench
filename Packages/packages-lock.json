@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.ign1s.editor-workbench": {
-      "version": "file:com.ign1s.editor-workbench",
+    "dev.ign1s-reiga.editor-workbench": {
+      "version": "file:dev.ign1s-reiga.editor-workbench",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

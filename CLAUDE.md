@@ -8,7 +8,7 @@ Build a stable, maintainable Unity Editor productivity package that covers the w
 
 - Unity: 6000.5 LTS
 - Language: C#
-- Package: `Packages/com.ign1s.editor-workbench`
+- Package: `Packages/dev.ign1s-reiga.editor-workbench`
 - Scope: Editor-only. Do not add runtime assemblies unless a feature strictly requires them.
 - UI: IMGUI for the MVP. UI Toolkit may be introduced only through an explicit migration decision.
 

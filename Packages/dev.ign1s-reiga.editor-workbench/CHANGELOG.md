@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Renamed the package from `com.ign1s.editor-workbench` to
+  `dev.ign1s-reiga.editor-workbench`, moving the embedded directory to match.
+  Package Manager treats this as a different package, so installs of the old
+  name will not upgrade and must be replaced.
 - Retargeted the Unity baseline from `6000.3.14f1` to `6000.5.2f1`.
 - Migrated the hierarchy decorator to the Unity 6.5 `EntityId` callbacks:
   `hierarchyWindowItemByEntityIdOnGUI` and `EditorUtility.EntityIdToObject`. The

@@ -12,9 +12,9 @@ REQUIRED = [
     "CLAUDE.md",
     ".claude/settings.json",
     "Packages/manifest.json",
-    "Packages/com.ign1s.editor-workbench/package.json",
-    "Packages/com.ign1s.editor-workbench/Editor/Ign1s.EditorWorkbench.Editor.asmdef",
-    "Packages/com.ign1s.editor-workbench/Editor/Core/AssemblyInfo.cs",
+    "Packages/dev.ign1s-reiga.editor-workbench/package.json",
+    "Packages/dev.ign1s-reiga.editor-workbench/Editor/Ign1s.EditorWorkbench.Editor.asmdef",
+    "Packages/dev.ign1s-reiga.editor-workbench/Editor/Core/AssemblyInfo.cs",
     "ProjectSettings/ProjectVersion.txt",
 ]
 PROHIBITED_DIRECTORIES = {"Library", "Temp", "Logs", "UserSettings"}
@@ -127,7 +127,7 @@ def main() -> int:
                     fail(f"Duplicate {kind} name {name}: {names[key]} and {path}", errors)
                 names[key] = path
 
-    compatibility_root = ROOT / "Packages/com.ign1s.editor-workbench/Editor/Compatibility"
+    compatibility_root = ROOT / "Packages/dev.ign1s-reiga.editor-workbench/Editor/Compatibility"
     for path in iter_project_files("*.cs"):
         check_braces(path, errors)
         text = path.read_text(encoding="utf-8")

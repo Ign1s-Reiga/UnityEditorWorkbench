@@ -13,8 +13,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PACKAGE_DIR: Packages/com.ign1s.editor-workbench
-  PACKAGE_NAME: com.ign1s.editor-workbench
+  PACKAGE_DIR: Packages/dev.ign1s-reiga.editor-workbench
+  PACKAGE_NAME: dev.ign1s-reiga.editor-workbench
 
 jobs:
   release:

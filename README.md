@@ -4,7 +4,7 @@ A source-first Unity 6.5 LTS project for building a personal replacement for com
 
 The repository contains:
 
-- An embedded UPM package: `com.ign1s.editor-workbench`
+- An embedded UPM package: `dev.ign1s-reiga.editor-workbench`
 - Folder colors, folder icons, and per-user favorites
 - A tabbed inspector window with selection following, locking, and history
 - Lightweight hierarchy decorations
@@ -23,17 +23,21 @@ Install into another Unity project through Package Manager.
 
 From a release tarball:
 
-1. Download `com.ign1s.editor-workbench-<version>.tgz` from the
+1. Download `dev.ign1s-reiga.editor-workbench-<version>.tgz` from the
    [releases page](https://github.com/Ign1s-Reiga/UnityEditorWorkbench/releases).
 2. In Package Manager choose `Add package from tarball` and select the file.
 
 From this repository, choose `Add package from git URL` and enter:
 
 ```text
-https://github.com/Ign1s-Reiga/UnityEditorWorkbench.git?path=Packages/com.ign1s.editor-workbench
+https://github.com/Ign1s-Reiga/UnityEditorWorkbench.git?path=Packages/dev.ign1s-reiga.editor-workbench
 ```
 
-Append `#v0.1.0` to the git URL to pin a specific release instead of tracking `main`.
+Append `#<tag>` to the git URL to pin a release instead of tracking `main`.
+
+Tags up to and including `v0.1.0` predate the package rename and live under the old
+path `Packages/com.ign1s.editor-workbench`, so pin those with the old path or use the
+release tarball instead.
 
 ## Open the project
 
