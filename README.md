@@ -9,12 +9,10 @@ The repository contains:
 - A tabbed inspector window with selection following, locking, and history
 - Lightweight hierarchy decorations
 - Editor tests
-- Claude Code project instructions, skills, and specialized subagents
 
 ## Requirements
 
 - Unity `6000.5.2f1` or another compatible Unity 6.5 LTS patch
-- A current Claude Code release with project skills and custom subagents
 - Python 3.10+ for repository validation
 
 ## Install the package
@@ -46,33 +44,6 @@ release tarball instead.
 3. Open it with Unity 6.5 LTS.
 4. Wait for package resolution and script compilation.
 5. Open `Window > Editor Workbench > Inspector`.
-
-## Claude Code
-
-Create a Git baseline after extracting the project so Claude Code can review precise diffs:
-
-```bash
-git init
-git add .
-git commit -m "Initial Unity Editor Workbench scaffold"
-```
-
-Then run Claude Code from the repository root:
-
-```bash
-claude
-```
-
-Useful skills:
-
-```text
-/implement-editor-feature <feature>
-/review-editor-code
-/run-unity-tests editmode
-/plan-next-milestone
-```
-
-Specialized project agents are stored in `.claude/agents/` and can be invoked by name or delegated to automatically. See `docs/CLAUDE_WORKFLOW.md` for the recommended sequence.
 
 ## Repository validation
 
