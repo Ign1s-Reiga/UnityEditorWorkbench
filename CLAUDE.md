@@ -93,6 +93,25 @@ $env:UNITY_EDITOR_PATH = "C:\\Program Files\\Unity\\Hub\\Editor\\6000.5.2f1\\Edi
 ./scripts/run-unity-tests.ps1
 ```
 
+## Claude Code
+
+Run Claude Code from the repository root:
+
+```bash
+claude
+```
+
+Useful skills:
+
+```text
+/implement-editor-feature <feature>
+/review-editor-code
+/run-unity-tests editmode
+/plan-next-milestone
+```
+
+Specialized project agents are stored in `.claude/agents/` and can be invoked by name or delegated to automatically. See `docs/CLAUDE_WORKFLOW.md` for the recommended sequence.
+
 ## Definition of done
 
 A feature is complete only when:
